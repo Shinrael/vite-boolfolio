@@ -1,5 +1,8 @@
 <script>
 
+import {store} from './data/store'
+import axios from 'axios';
+
 import Header from './components/Header.vue'
 
   export default {
@@ -20,9 +23,9 @@ import Header from './components/Header.vue'
 </script>
 
 <template>
-  <div>
-    <Header />
-    <router-view></router-view>
+  <Header />
+  <div class="container mt-3">
+  <router-view></router-view>
   </div>
 </template>
 

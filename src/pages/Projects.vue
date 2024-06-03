@@ -1,7 +1,7 @@
-import {store} from './data/store'
+<script>
+import {store} from '../data/store'
 import axios from 'axios';
 
-<script>
   export default {
     name: 'projects',
     data(){
@@ -13,7 +13,8 @@ import axios from 'axios';
       getApi(){
         axios.get(store.apiUrl)
         .then(result => {
-          this.projects = result.data;
+          this.projects = result.data.data;
+          console.log(result.data);
         })
         .catch(error => {
           console.log(error.message);
@@ -30,8 +31,12 @@ import axios from 'axios';
 <template>
   <div>
     <h1>I miei Progetti</h1>
-    <ul>
-      <li v-for="project in projects" :key="project.id">{{ project.id }} - {{ project.title }}</li>
+    <ul class="list-unstyled">
+      <li
+        v-for="project in projects"
+        :key="project.id">
+          {{ project.id }} - {{ project.title }}
+        </li>
     </ul>
   </div>
 </template>

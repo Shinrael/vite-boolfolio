@@ -1,6 +1,5 @@
 <script>
-import axios from 'axios';
-import {store} from './data/store'
+
 import Header from './components/Header.vue'
 
   export default {

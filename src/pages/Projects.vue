@@ -1,14 +1,38 @@
+import {store} from './data/store'
+import axios from 'axios';
+
 <script>
   export default {
-    name: 'projects'
+    name: 'projects',
+    data(){
+      return{
+        projects: []
+      }
+    },
+    methods:{
+      getApi(){
+        axios.get(store.apiUrl)
+        .then(result => {
+          this.projects = result.data;
+        })
+        .catch(error => {
+          console.log(error.message);
+        })
+      }
+    },
+    mounted(){
+      this.getApi();
+    }
   }
 </script>
 
 
 <template>
   <div>
-    <h1>Project</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium sequi ea possimus eveniet animi placeat expedita veritatis facere doloribus? Inventore alias fugit non numquam est qui, id praesentium magnam impedit?</p>
+    <h1>I miei Progetti</h1>
+    <ul>
+      <li v-for="project in projects" :key="project.id">{{ project.id }} - {{ project.title }}</li>
+    </ul>
   </div>
 </template>
 

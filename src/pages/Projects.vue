@@ -1,20 +1,28 @@
 <script>
 import {store} from '../data/store'
 import axios from 'axios';
+import Paginator from '../components/partials/Paginator.vue'
 
   export default {
     name: 'projects',
+    components:{
+      Paginator,
+    },
     data(){
       return{
-        projects: []
+        projects: [],
+        paginator:{}
       }
     },
     methods:{
-      getApi(){
-        axios.get(store.apiUrl)
+      getApi(apiUrl){
+        axios.get(apiUrl)
         .then(result => {
           this.projects = result.data.data;
           console.log(result.data);
+          this.paginator.current_page = result.data.current_page;
+          this.paginator.links = result.data.links;
+          this.paginator.total = result.data.total;
         })
         .catch(error => {
           console.log(error.message);
@@ -22,7 +30,7 @@ import axios from 'axios';
       }
     },
     mounted(){
-      this.getApi();
+      this.getApi(store.apiUrl);
     }
   }
 </script>
@@ -38,6 +46,7 @@ import axios from 'axios';
           {{ project.id }} - {{ project.title }}
         </li>
     </ul>
+    <Paginator :data="paginator" @callApi="getApi" />
   </div>
 </template>
 

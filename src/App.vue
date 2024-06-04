@@ -25,7 +25,7 @@ import Header from './components/Header.vue'
 <template>
   <Header />
   <div class="container-app d-flex">
-    <div class="container bg-white h-100 mt-5 border border-5 rounded">
+    <div class="container bg-white h-100 w-100 mt-5 border border-5 rounded">
     <router-view></router-view>
   </div>
   </div>

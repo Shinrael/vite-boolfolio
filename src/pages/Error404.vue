@@ -7,8 +7,8 @@
 
 <template>
   <div>
-    <h1>Error</h1>
-    <p>Errore</p>
+    <h1>Eh, volevi? Guarda che faccia</h1>
+    <img src="https://i.ytimg.com/vi/fYM9Cc1Jk_s/sddefault.jpg" alt="">
   </div>
 </template>
 

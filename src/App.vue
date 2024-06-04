@@ -7,7 +7,7 @@ import Header from './components/Header.vue'
 
   export default {
     components:{
-      Header
+      Header,
     },
     data(){
       return {
@@ -24,9 +24,12 @@ import Header from './components/Header.vue'
 
 <template>
   <Header />
-  <div class="container mt-3">
-  <router-view></router-view>
+  <div class="container-app d-flex">
+    <div class="container bg-white h-100 mt-5 border border-5 rounded">
+    <router-view></router-view>
   </div>
+  </div>
+  
 </template>
 
 <style lang="scss" scoped>
